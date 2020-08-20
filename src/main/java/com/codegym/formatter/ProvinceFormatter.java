@@ -26,6 +26,7 @@ public class ProvinceFormatter implements Formatter<Province> {
 
     @Override
     public String print(Province object, Locale locale) {
+
         return "[" + object.getId() + ", " +object.getName() + "]";
     }
 }

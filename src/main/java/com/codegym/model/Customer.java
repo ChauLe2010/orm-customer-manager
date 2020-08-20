@@ -17,9 +17,11 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName) {
+
+    public Customer(String firstName, String lastName, Province province) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.province = province;
     }
 
     @Override
@@ -28,6 +30,7 @@ public class Customer {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", province=" + province +
                 '}';
     }
 
@@ -53,5 +56,13 @@ public class Customer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Province getProvince() {
+        return province;
+    }
+
+    public void setProvince(Province province) {
+        this.province = province;
     }
 }

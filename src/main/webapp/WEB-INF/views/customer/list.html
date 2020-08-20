@@ -14,7 +14,7 @@
         <th>ID</th>
         <th>Firstname</th>
         <th>Lastname</th>
-<!--        <th>Province</th>-->
+        <th>Province</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -23,7 +23,7 @@
         <td th:text="${customer.getId()}"></td>
         <td th:text="${customer.getFirstName()}"></td>
         <td th:text="${customer.getLastName()}"></td>
-<!--        <td th:text="${customer.province.name}"></td>-->
+        <td th:text="${customer.province.name}"></td>
         <td><a th:href="@{/customer/{id}/edit(id=${customer.getId()})}">edit</a></td>
         <td><a th:href="@{/customer/{id}/delete(id=${customer.getId()})}">delete</a></td>
     </tr>
