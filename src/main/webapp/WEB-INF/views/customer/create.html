@@ -28,8 +28,10 @@
 <!--                <select>-->
 <!--                    <option th:each="p : ${provinces}" th:value="${p.id}" th:text="${p.name}"></option>-->
 <!--                </select>-->
-                <select th:field="*{province}">
-                    <option th:each="province : ${provinces}" th:value="${province.getId()}" th:text="${province.getName()}"></option>
+                <select th:field="*{province}" name="province">
+                    <option th:each="province : ${provinces}"
+                            th:value="${province.getId()}"
+                            th:text="${province.getName()}"></option>
                 </select>
             </td>
         </tr>

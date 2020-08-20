@@ -38,7 +38,8 @@ import java.util.Properties;
 @EnableWebMvc
 @EnableTransactionManagement
 @EnableJpaRepositories("com.codegym.repository")//xem them ghi chu ben duoi cung
-@ComponentScan({"com.codegym.controllers"})
+@ComponentScan(basePackages={"com.codegym.controllers","com.codegym.formatter"})
+
 public class ApplicationConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
     private ApplicationContext applicationContext;
@@ -104,7 +105,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
 
     Properties additionProperties(){
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
+        properties.setProperty("hibernate.hbm2ddl.auto", "none");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return properties;
     }

@@ -1,6 +1,8 @@
 package com.codegym.controllers;
 
+import com.codegym.model.Customer;
 import com.codegym.model.Province;
+import com.codegym.service.CustomerService;
 import com.codegym.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ProvinceController {
+
     @Autowired
     private ProvinceService provinceService;
+
+    @Autowired
+    private CustomerService customerService;
+
     @GetMapping("/provinces")
     private ModelAndView listProvince(){
         Iterable<Province> provinces=provinceService.findAll();
@@ -35,6 +42,19 @@ public class ProvinceController {
         modelAndView.addObject("message","New province created successfully");
         return modelAndView;
     }
+    @GetMapping("/province/{id}/view")
+    private ModelAndView viewProvince(@PathVariable("id")Long id){
+        Province province=provinceService.findById(id);
+        if(province==null){
+            return new ModelAndView("error");
+        }
+        Iterable<Customer> customers=customerService.findAllByProvince(province);
+        ModelAndView modelAndView=new ModelAndView("/province/view");
+        modelAndView.addObject("province",province);
+        modelAndView.addObject("customers",customers);
+        return modelAndView;
+    }
+
     @GetMapping("/province/{id}/edit")
     private ModelAndView showEditForm(@PathVariable Long id){
         Province province=provinceService.findById(id);
